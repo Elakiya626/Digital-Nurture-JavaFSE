@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:#121212;
+    margin:0;
+    font-family:Arial,sans-serif;
+}
+
+.player{
+    width:500px;
+    padding:30px;
+    background:#181818;
+    border-radius:15px;
+    color:white;
+    text-align:center;
+}
+
+#progress{
+    width:100%;
+    margin:20px 0;
+}
+
+.time{
+    display:flex;
+    justify-content:space-between;
+    font-size:14px;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:25px;
+    font-size:18px;
+    cursor:pointer;
+    margin:10px;
+}
+
+.play{
+    background:#1DB954;
+    color:white;
+}
+
+.pause{
+    background:gray;
+    color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="player">
+    <h1>My Song</h1>
+
+    <input type="range" id="progress" value="0" min="0" max="180">
+
+    <div class="time">
+        <span id="current">0:00</span>
+        <span>3:00</span>
+    </div>
+
+    <button class="play" onclick="playSong()">▶ Play</button>
+    <button class="pause" onclick="pauseSong()">⏸ Pause</button>
+</div>
+
+<script>
+let progress = document.getElementById("progress");
+let current = document.getElementById("current");
+
+let timer;
+let seconds = 0;
+
+function playSong() {
+
+    clearInterval(timer);
+
+    timer = setInterval(() => {
+        if(seconds < 180){
+            seconds++;
+            progress.value = seconds;
+
+            let min = Math.floor(seconds / 60);
+            let sec = seconds % 60;
+
+            current.innerText =
+                min + ":" + (sec < 10 ? "0" + sec : sec);
+        }
+        else{
+            clearInterval(timer);
+        }
+    },1000);
+}
+
+function pauseSong(){
+    clearInterval(timer);
+}
+</script>
+
+</body>
+</html>
