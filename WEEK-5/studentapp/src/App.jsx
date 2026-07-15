@@ -1,14 +1,12 @@
 function App() {
   return (
     <div>
-      <h1>Student Management System</h1>
-
-      <h2>Student Details</h2>
-
+      <h1>Student Details</h1>
       <ul>
         <li>Name: Elakiya</li>
-        <li>Department: EEE</li>
         <li>College: Kongu Engineering College</li>
+        <li>Department: EEE</li>
+        <li>Year: Final Year</li>
       </ul>
     </div>
   );
